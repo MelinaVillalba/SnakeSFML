@@ -20,12 +20,21 @@ int main()
     //Obligamos al juego a ir en un limite de 60fps
     window.setFramerateLimit(60);
 
+    //Dibuja puntaje por pantalla
+    sf::Font font;
+    font.loadFromFile("Fuentes/Playground.ttf");
+    sf::Text text;
+    text.setFont(font);
+
+
     //Declaramos
     muro limite;
     personaje snake;
     Comida apple;
     apple.respawn();
 
+
+    int puntos = 0;
 
     //Game Loop
     while (window.isOpen())
@@ -44,14 +53,20 @@ int main()
         if(snake.colisionEnCurso(apple))
         {
             apple.respawn();
+            puntos = puntos +10;
 
         }
+
+
+        //Dibuja puntaje por pantalla
+        text.setString(std::to_string(puntos));
 
         window.clear();
 
         window.draw(limite);
         window.draw(snake);
         window.draw(apple);
+        window.draw(text); //Dibuja puntaje por pantalla
         //Draw
 
 
