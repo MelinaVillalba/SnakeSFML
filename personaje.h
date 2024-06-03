@@ -17,10 +17,9 @@ class personaje:public sf::Drawable, public colision
     sf::Texture _textureBody;
     Direction currentDirection = Direction::None;
 
-    float _velocidad = 5;
+    float _velocidad = 3;
     int life = 3;
     int cont =3;
-
 
     public:
         personaje();
@@ -28,6 +27,7 @@ class personaje:public sf::Drawable, public colision
         void draw(sf::RenderTarget& target, sf::RenderStates states)const override ;
         sf::FloatRect getBounds() const override;
         void aumentoVelocidad();
+        int getLife(int life);
         virtual ~personaje();
 
     protected:
