@@ -123,7 +123,8 @@ void personaje::update()
                 _sprite.setPosition(_sprite.getPosition().x, 540);
             }
 
-            // si choca con abajo
+
+        // si choca con el muro de abajo
         if(_sprite.getPosition().y==540)
             {
                  _sprite.setPosition(400, 300);
@@ -131,15 +132,18 @@ void personaje::update()
                     if (life > 0 )
                         {
                             life--;
-                            cout << life << endl;
-                        }
-                        if(life ==0 && life > -1)
+                            getLife(life);
+
+                            if (life == 0)
                             {
-                                cout << "Game Over"<<endl;
+                                _velocidad = 0;
+                                _sprite.setScale(1, 1);
                             }
+                        }
+
             }
 
-            // si choca con arriba
+            // si choca con el muro de arriba
             if(_sprite.getPosition().y==65)
                 {
                      _sprite.setPosition(400, 300);
@@ -147,15 +151,17 @@ void personaje::update()
                         if (life > 0 )
                             {
                                 life--;
-                                cout << life << endl;
-                            }
-                            if(life ==0 && life > -1)
+                                getLife(life);
+                                if (life == 0)
                                 {
-                                    cout << "Game Over"<<endl;
+                                    _velocidad = 0;
+                                    _sprite.setScale(1, 1);
                                 }
+                            }
+
                 }
 
-            //si choca con izquierda
+            //si choca con el muro de la izquierda
              if(_sprite.getPosition().x==65)
                 {
                      _sprite.setPosition(400, 300);
@@ -163,15 +169,16 @@ void personaje::update()
                         if (life > 0 )
                             {
                                 life--;
-                                cout << life << endl;
-                            }
-                            if(life ==0 && life > -1)
+                                getLife(life);
+                                if (life == 0)
                                 {
-                                    cout << "Game Over"<<endl;
+                                    _velocidad = 0;
+                                    _sprite.setScale(1, 1);
                                 }
+                            }
                 }
 
-                //si choca con derecha
+                //si choca con el muro de la derecha
                 if(_sprite.getPosition().x==740)
                     {
                          _sprite.setPosition(400, 300);
@@ -179,25 +186,38 @@ void personaje::update()
                             if (life > 0 )
                                 {
                                     life--;
-                                    cout << life << endl;
-                                }
-                                if(life ==0 && life > -1)
+                                    getLife(life);
+                                    if (life == 0)
                                     {
-                                        cout << "Game Over"<<endl;
+                                        _velocidad = 0;
                                     }
+                                }
+
                     }
 
 }
 
- sf::FloatRect personaje::getBounds() const
- {
-     return _sprite.getGlobalBounds();
- }
 
+int personaje::getLife(int life)
+{
+    return this->life;
+}
+
+//Sirve para las colisiones
+ sf::FloatRect personaje::getBounds() const
+{
+    return _sprite.getGlobalBounds();
+}
+
+//Aumenta la velocidad
 void personaje::aumentoVelocidad()
 {
-    //_velocidad +20;
+    _velocidad += 0.5;
 }
+
+
+
+
 //const porque no modifica el estado actual del personaje
 void personaje::draw(sf::RenderTarget& target, sf:: RenderStates states) const
 {
