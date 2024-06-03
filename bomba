@@ -1,0 +1,26 @@
+#ifndef BOMBA_H
+#define BOMBA_H
+#include <SFML/Graphics.hpp>
+#include "personaje.h"
+#include "colision.h"
+
+
+class bomba:public sf::Drawable, public colision
+{
+    sf::Sprite _sprite;
+    sf::Texture _texture;
+    sf::Sprite _spriteBomba;
+    sf::Texture _textureBomba;
+
+    public:
+        bomba();
+        void update();
+        void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
+        void respawn();
+        sf::FloatRect getBounds()const override;
+        virtual ~bomba();
+
+    private:
+};
+
+#endif // BOMBA_H
