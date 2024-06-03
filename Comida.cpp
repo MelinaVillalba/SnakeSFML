@@ -11,6 +11,7 @@ Comida::Comida()
 
 }
 
+
  sf::FloatRect Comida::getBounds()const
 {
     return _sprite.getGlobalBounds();
