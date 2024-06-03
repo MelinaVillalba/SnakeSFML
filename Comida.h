@@ -9,6 +9,8 @@ class Comida:public sf::Drawable, public colision
 {
     sf::Sprite _sprite;
     sf::Texture _texture;
+    sf::Sprite _spriteBomba;
+    sf::Texture _textureBomba;
 
     public:
         Comida();
